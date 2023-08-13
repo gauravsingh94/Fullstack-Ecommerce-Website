@@ -3,7 +3,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoute from "./routes/user";
-
+import adminRoute from "./routes/admin";
+import productRoute from "./routes/product";
 
 dotenv.config();
 const app = express();
@@ -11,6 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/user",userRoute);
+app.use("/admin",adminRoute);
+app.use("/products",productRoute);
 
 const databaseURI = process.env.DATABASE_URI!;
 

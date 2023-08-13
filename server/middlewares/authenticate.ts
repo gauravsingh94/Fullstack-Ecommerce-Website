@@ -62,3 +62,12 @@ export const authenticateJWTadmin = (req:Request,res:Response,next:NextFunction)
         res.status(401).json({error:"Unauthorized."});
     }
 }
+
+export const authenticateJWTany = (req:Request,res:Response,next:NextFunction)=>{
+    const roleType = req.headers.role;
+    if(roleType=="admin"){
+        authenticateJWTadmin(req,res,next);
+    }else{
+        authenticateJWTuser(req,res,next);
+    }
+}
